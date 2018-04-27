@@ -1,0 +1,33 @@
+<app-menu-back></app-menu-back>
+
+<br/>
+<div class="card z-depth-2">
+    <div class="card-content black-text">
+        <div style="width: 100%; text-align: center">
+            <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" name="nombre" [(ngModel)]="usuario.nombre" type="text" class="validate">
+                    </div>
+                    <div class="col s12">
+                        <label for="correo">Correo</label>
+                        <input id="correo" nombre= "correo" [(ngModel)]="usuario.correo" type="email" class="validate">
+                    </div>
+                    <div class="col s12">
+                        <label for="telefono">Telefono</label>
+                        <input id="telefono" name="number" [(ngModel)]="usuario.telefono" type="text" class="validate">
+                    </div>
+                    <div class="col s12">
+                        <label for="direccion">Direccion</label>
+                        <input id="direccion" name="direccion" [(ngModel)]="usuario.direccion" type="text" class="validate">
+                    </div>
+                    <div class="col s12" style="text-align: center">
+                        <input id="btnSubmit" class="waves-effect waves-light btn" type="button" value="Enviar Datos" (click)="guardarUsuario()">
+                    </div>
+                </div>
+        </div>
+    </div>
+  </div>

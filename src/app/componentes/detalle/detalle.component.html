@@ -1,0 +1,16 @@
+<app-menu-back></app-menu-back>
+<div class="container">
+  <div class="card" *ngFor="let producto of productos">
+      <div class="card-image">
+          <img [src]="producto.imagen" alt=""> 
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa fa-plus"></i></a>
+      </div>
+      <div class="card-content">
+        <b>{{producto.nombre}}</b>
+        <p>{{producto.descripcion}}</p>
+      </div>
+      <div class="card-action" style="font-size: 30px;text-align: center;">
+        <a >{{producto.precio | currency:'COP':'symbol-narrow':'4.0-2'}}</a>
+      </div>
+  </div>
+</div>

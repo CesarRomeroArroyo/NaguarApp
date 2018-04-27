@@ -1,0 +1,22 @@
+<app-menu></app-menu>
+<blockquote>
+      <h5 style="font-weight: bold;">Nuestro Menu</h5>
+</blockquote>
+<div class="container">
+    
+        <div class="card-panel  lighten-5 z-depth-5" *ngFor="let categoria of categorias" [routerLink]="['detalle', categoria.idunico]">
+          <div class="row valign-wrapper" style="margin-bottom: 0px !important;">
+            <div class="col s2" style="width: 70% !important;">
+                <img [src]="categoria.imagen" alt="" class="circle responsive-img"> 
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                  {{categoria.nombre}}
+              </span>
+            </div>
+          </div>
+        </div>
+    
+
+
+</div>
