@@ -1,7 +1,7 @@
 import { LocalstorageService } from '../../servicios/localstorage.service';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../servicios/firebase.service';
-
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuario',
@@ -19,11 +19,30 @@ export class UsuarioComponent implements OnInit {
   }
 
   guardarUsuario() {
-    if (this.localStorage.obtener('NAGUARA_USER')) {
-      this.localStorage.agregar('NAGUARA_USER', JSON.stringify(this.usuario));
-      this.service.guardarDatos('clientes', this.usuario);
-    }
-    console.log(this.usuario);
+    this.service.validarUsuario('clientes', this.usuario.correo).subscribe(
+      result => {
+        if (result.length === 0) {
+          if (!this.localStorage.obtener('NAGUARA_USER')) {
+            this.localStorage.agregar('NAGUARA_USER', JSON.stringify(this.usuario));
+            this.service.guardarDatos('clientes', this.usuario);
+            swal({
+              text: 'El usuario se creo correctamente',
+              type: 'success',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+        } else {
+          if (!this.localStorage.obtener('NAGUARA_USER')) {
+            this.localStorage.agregar('NAGUARA_USER', JSON.stringify(result[0]));
+            swal({
+              text: 'El usuario se creo correctamente',
+              type: 'success',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+        }
+      }
+    );
   }
 
 }

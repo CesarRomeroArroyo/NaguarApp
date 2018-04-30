@@ -3,7 +3,7 @@
   <div class="card" *ngFor="let producto of productos">
       <div class="card-image">
           <img [src]="producto.imagen" alt=""> 
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa fa-plus"></i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="agregarProducto(producto)"><i class="fa fa-plus"></i></a>
       </div>
       <div class="card-content">
         <b>{{producto.nombre}}</b>
@@ -12,5 +12,17 @@
       <div class="card-action" style="font-size: 30px;text-align: center;">
         <a >{{producto.precio | currency:'COP':'symbol-narrow':'4.0-2'}}</a>
       </div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h4>{{producto.nombre}}</h4>
+    <p>{{producto.descripcion}}</p>
+    <input placeholder="Cantidad" id="first_name" type="text" class="validate" style="text-align: center" [(ngModel)]="producto.cantidad">
+    <textarea id="textarea1" class="materialize-textarea" placeholder="Observaciones" [(ngModel)]="producto.observaciones"></textarea>  
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="agregarPedido() ">Aceptar</a>
   </div>
 </div>

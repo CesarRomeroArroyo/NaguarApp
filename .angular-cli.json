@@ -21,12 +21,14 @@
       "styles": [
         "styles.css",
         "../node_modules/materialize-css/dist/css/materialize.min.css",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/sweetalert2/dist/sweetalert2.css"
       ],
       "scripts": [
         "index.js",
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/materialize-css/dist/js/materialize.min.js"
+        "../node_modules/materialize-css/dist/js/materialize.min.js",
+        "../node_modules/sweetalert2/dist/sweetalert2.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -39,6 +39,19 @@ export class FirebaseService {
     );
   }
 
+  validarUsuario(tabla, idunico): Observable<any> {
+    this.itemsCollection = this.db.collection<any>('clientes', ref => ref.where('correo', '==', idunico));
+    return this.itemsCollection.snapshotChanges().map(
+      actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }
+    );
+  }
+
   obtenerPorCategoria(tabla, idunico): Observable<any> {
     this.itemsCollection = this.db.collection<any>('productos', ref => ref.where('categoria', '==', idunico));
     return this.itemsCollection.snapshotChanges().map(
