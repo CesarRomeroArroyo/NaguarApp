@@ -17,6 +17,7 @@ import { LocalstorageService } from './servicios/localstorage.service';
 import { AppSettings } from './app.settings';
 import { FirebaseService } from './servicios/firebase.service';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
+import { CarritoComponent } from './componentes/carrito/carrito.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
     UsuarioComponent,
     MenuComponent,
     MenuBackComponent,
-    DetalleComponent
+    DetalleComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

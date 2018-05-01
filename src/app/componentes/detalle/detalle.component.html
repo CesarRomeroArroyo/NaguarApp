@@ -26,3 +26,9 @@
     <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="agregarPedido() ">Aceptar</a>
   </div>
 </div>
+
+<div class="fixed-action-btn" *ngIf="pedido.length > 0">
+    <a class="btn-floating btn-large pulse" (click)="carrito()" style="background-color: #1b1b19  !important;" >
+      <i class="fa fa-cart-arrow-down fa-2x"></i>
+    </a>
+  </div>

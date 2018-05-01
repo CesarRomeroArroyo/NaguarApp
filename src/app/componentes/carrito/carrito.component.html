@@ -1,0 +1,60 @@
+<app-menu-back></app-menu-back>
+<blockquote>
+  <h5 style="font-weight: bold;">Tu pedido</h5>
+</blockquote>
+
+<ul class="collection">
+  <li class="collection-item avatar" *ngFor="let producto of pedido" style="font-size: 22px;">
+    <img [src]="producto.imagen" alt="" class="circle">
+    <span class="title" style="font-size: 22px;" (click)="editarProducto(producto)"><b>{{producto.nombre}}</b> X {{producto.cantidad}}</span>
+    <p style="font-size: 12px">{{producto.observaciones}} <br> 
+    </p>
+    <p style="color: #f6a413" class="dato-valor">{{producto.precioTotal  | currency:'COP':'symbol-narrow':'4.0-2'}} 
+      <a *ngIf="estado === 0"  class="waves-effect waves-light btn red" (click)="borrarProducto(producto)">Borrar</a></p>
+    <div class="secondary-content" style="text-align: center">
+      <p class="dato-valor2">{{producto.precioTotal  | currency:'COP':'symbol-narrow':'4.0-2'}}</p>
+      <p class="dato-valor2">
+        <a *ngIf="estado === 0"  class="waves-effect waves-light btn red" (click)="borrarProducto(producto)">Borrar</a>
+      </p>
+    </div>
+  </li>
+
+  <li class="collection-item avatar"  style="font-size: 22px;">    
+    <span class="title" style="font-size: 22px;"><b>Valor Domicilio</b></span>
+    <a href="#!" class="secondary-content">{{configuracion[0].domicilio  | currency:'COP':'symbol-narrow':'4.0-2'}}</a>
+  </li>
+</ul>
+
+<ul class="collection">
+
+  <li class="collection-item avatar"  style="font-size: 25px;">    
+    <span class="title" style="font-size: 25px;"><b>TOTAL</b></span>
+    <a href="#!" class="secondary-content">{{total  | currency:'COP':'symbol-narrow':'4.0-2'}}</a>
+  </li>
+</ul>
+
+<div class="container">
+  <button *ngIf="estado === 0" class="waves-effect waves-light btn-large" (click)="enviarPedido()" style="width: 100% !important"><i class="fa fa-check "></i> Confirmar pedido</button>
+  <button *ngIf="estado === 1" class="waves-effect waves-light btn-large red" (click)="cancelarPedido()" style="width: 100% !important"><i class="fa fa-times "></i> Cancelar pedido</button>
+</div>
+
+<div id="modalEditar" class="modal">
+  <div class="modal-content">
+    <input placeholder="Cantidad" id="first_name" type="text" class="validate" style="text-align: center" [(ngModel)]="producto.cantidad">
+    <textarea id="textarea1" class="materialize-textarea" placeholder="Observaciones" [(ngModel)]="producto.observaciones"></textarea>  
+  </div>
+  <div class="modal-footer">
+    <a *ngIf="estado === 0"  class="modal-action modal-close waves-effect waves-green btn-flat" (click)="modificarPedido() ">Aceptar</a>
+  </div>
+</div>
+
+<div id="modalEliminar" class="modal">
+  <div class="modal-content">
+    Desea Cancelar el Pedido?
+    <textarea id="textarea1" class="materialize-textarea" placeholder="Indique el motivo de cancelacion" [(ngModel)]="observacionesCancelar"></textarea>  
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">NO</a>
+    <a class="modal-action modal-close waves-effect waves-red btn-flat" (click)="confirmaCancelarPedido() ">SI</a>
+  </div>
+</div>

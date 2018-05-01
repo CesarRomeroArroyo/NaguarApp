@@ -39,6 +39,19 @@ export class FirebaseService {
     );
   }
 
+  obtenerPorCorreo(idunico): Observable<any> {
+    this.itemsCollection = this.db.collection<any>('pedidos', ref => ref.where('mail', '==', idunico));
+    return this.itemsCollection.snapshotChanges().map(
+      actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }
+    );
+  }
+
   validarUsuario(tabla, idunico): Observable<any> {
     this.itemsCollection = this.db.collection<any>('clientes', ref => ref.where('correo', '==', idunico));
     return this.itemsCollection.snapshotChanges().map(
@@ -69,5 +82,13 @@ export class FirebaseService {
     data.idunico = this.appSettings.guid();
     this.itemsCollection = this.db.collection<any>(tabla);
     this.itemsCollection.add(data);
+  }
+
+  eliminarDatos(tabla: string, id: any) {
+    this.itemsCollection = this.db.collection<any>(tabla);
+    this.itemsCollection.doc(id).delete().then(
+      () => {
+      }
+    );
   }
 }
