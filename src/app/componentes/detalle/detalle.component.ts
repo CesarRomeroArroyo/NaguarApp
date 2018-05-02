@@ -15,7 +15,7 @@ export class DetalleComponent implements OnInit {
   productos: any;
   producto: any = {categoria: '', descripcion: '', imagen: '', nombre: '', precio: '', precioTotal: '', cantidad: '', observaciones: ''};
   pedido: any = [];
-  constructor(private activatedRoute: ActivatedRoute, private service: FirebaseService, 
+  constructor(private activatedRoute: ActivatedRoute, private service: FirebaseService,
     private localStorage: LocalstorageService, private router: Router) {}
 
   ngOnInit() {
